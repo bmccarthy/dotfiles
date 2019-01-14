@@ -101,7 +101,8 @@ export LC_CTYPE=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' # manage dotfiles
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com" # get current IP
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/nvm/init-nvm.sh
