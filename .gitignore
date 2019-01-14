@@ -1,0 +1,5 @@
+# dotfiles repository
+.cfg
+
+# Compiled Python files
+*.pyc
