@@ -66,6 +66,7 @@ ZSH_THEME="spaceship"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git,
+  heroku,
   colored-man-pages
 )
 
@@ -93,6 +94,9 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+# export the location of chromium
+export CHROME_BIN="/usr/bin/chromium"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -103,6 +107,8 @@ export LC_CTYPE=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' # manage dotfiles
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com" # get current IP
+alias billtrust="sudo openconnect vpnssnj.billtrust.com" # VPN into billtrust
+alias cls='clear'
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/nvm/init-nvm.sh
