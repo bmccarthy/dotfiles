@@ -1,9 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$PATH
-. /opt/anaconda/etc/profile.d/conda.sh
+if [ -f /opt/anaconda/etc/profile.d/conda.sh ]; then
+  . /opt/anaconda/etc/profile.d/conda.sh
+fi
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/bmccarthy/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -87,7 +89,7 @@ fi
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
+export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 
 # You may need to manually set your language environment
 # zsh prompt was repeatiang characters in arch linux when /etc/locale.gen did not have en_US.UTF-8 uncommented and localegen re-run
@@ -108,6 +110,11 @@ export CHROME_BIN="/usr/bin/chromium"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' # manage dotfiles
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com" # get current IP
 alias billtrust="sudo openconnect vpnssnj.billtrust.com" # VPN into billtrust
+# useful for finding things like INSECURE keys (acceptable: RSA 4096 or Ed25519)
+alias sshlistkeys='for keyfile in ~/.ssh/id_*; do ssh-keygen -l -f "${keyfile}"; done | uniq'
+# Keep this up to date with latest security best practices
+alias sshkeygen='ssh-keygen -o -a 100 -t ed25519'
+alias today='date +%Y-%m-%d'
 alias cls='clear'
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
