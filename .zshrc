@@ -117,5 +117,10 @@ alias sshkeygen='ssh-keygen -o -a 100 -t ed25519'
 alias today='date +%Y-%m-%d'
 alias cls='clear'
 
-source /usr/share/doc/pkgfile/command-not-found.zsh
-source /usr/share/nvm/init-nvm.sh
+if [ -f /usr/share/doc/pkgfile/command-not-found.zsh ]; then
+  source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
+
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
