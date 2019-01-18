@@ -97,7 +97,13 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 # export the location of chromium
-export CHROME_BIN="/usr/bin/chromium"
+if [ -f /usr/bin/chromium ]; then
+  export CHROME_BIN="/usr/bin/chromium"
+fi
+
+if [ -f /usr/bin/google-chrome-stable ]; then
+  export CHROME_BIN="/usr/bin/google-chrome-stable"
+fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
