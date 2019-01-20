@@ -97,7 +97,13 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 # export the location of chromium
-export CHROME_BIN="/usr/bin/chromium"
+if [ -f /usr/bin/chromium ]; then
+  export CHROME_BIN="/usr/bin/chromium"
+fi
+
+if [ -f /usr/bin/google-chrome-stable ]; then
+  export CHROME_BIN="/usr/bin/google-chrome-stable"
+fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -117,5 +123,15 @@ alias sshkeygen='ssh-keygen -o -a 100 -t ed25519'
 alias today='date +%Y-%m-%d'
 alias cls='clear'
 
-source /usr/share/doc/pkgfile/command-not-found.zsh
-source /usr/share/nvm/init-nvm.sh
+if [ -f /usr/share/doc/pkgfile/command-not-found.zsh ]; then
+  source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
+
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
+
+if [ -f $HOME/.nvm/nvm.sh ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
