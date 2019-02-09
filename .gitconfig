@@ -3,6 +3,11 @@
 	name = Brian McCarthy
 
 [alias]
+	# pull in changes and rebase.
+	up = !git pull --rebase --prune $@
+
+	cob = checkout -b
+
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
