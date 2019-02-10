@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$PATH
+export PATH=$PATH:~/.local/bin
+
 if [ -f /opt/anaconda/etc/profile.d/conda.sh ]; then
   . /opt/anaconda/etc/profile.d/conda.sh
 fi
@@ -91,6 +92,8 @@ fi
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 
+export AWS_REGION="us-east-1"
+
 # You may need to manually set your language environment
 # zsh prompt was repeatiang characters in arch linux when /etc/locale.gen did not have en_US.UTF-8 uncommented and localegen re-run
 export LANG=en_US.UTF-8
@@ -120,8 +123,44 @@ alias billtrust="sudo openconnect vpnssnj.billtrust.com" # VPN into billtrust
 alias sshlistkeys='for keyfile in ~/.ssh/id_*; do ssh-keygen -l -f "${keyfile}"; done | uniq'
 # Keep this up to date with latest security best practices
 alias sshkeygen='ssh-keygen -o -a 100 -t ed25519'
+
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T"'
+alias nowtime=now
+alias nowdate='date +%Y-%m-%d'
 alias today='date +%Y-%m-%d'
+
 alias cls='clear'
+# view csv files in columns
+alias csv='column -s, -t'
+# view the weather
+alias weather='curl wttr.in/Lawrenceville'
+alias h="fc -li 1"  # like `history` but with dates
+# disk usage for directories sorted by size
+alias duss="du -d 1 -h | sort -hr | egrep -v ^0"
+
+# Stop after sending count ECHO_REQUEST packets #
+alias ping='ping -c 5'
+# Do not wait interval 1 second, go fast #
+alias fastping='ping -c 100 -s.2'
+ 
+ # need jq installed
+ hibp() {
+      curl -fsS "https://haveibeenpwned.com/api/v2/breachedaccount/$1" | jq -r 'sort_by(.BreachDate)[] | [.Title,.Domain,.BreachDate,.PwnCount] | @tsv' | column -t -s$'\t'
+  }
+
+chrome-test() {
+  BASE_TEMP_DIR=~/.google-chrome-temp-profiles
+  mkdir -p $BASE_TEMP_DIR
+
+  TEMP_DIR=$(mktemp -d $BASE_TEMP_DIR/google-chome.XXXXXXX)
+
+  echo "Running Chrome with temp folder in: $TEMP_DIR"
+  $CHROME_BIN --user-data-dir=$TEMP_DIR --no-first-run --ignore-certificate-errors
+
+  rm -rf $TEMP_DIR
+}
+
 
 if [ -f /usr/share/doc/pkgfile/command-not-found.zsh ]; then
   source /usr/share/doc/pkgfile/command-not-found.zsh
