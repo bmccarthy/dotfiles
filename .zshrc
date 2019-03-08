@@ -94,6 +94,10 @@ export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 
 export AWS_REGION="us-east-1"
 
+# GO
+export GOPATH=$HOME/go
+export GOROOT=$HOME/bin/go-src
+
 # You may need to manually set your language environment
 # zsh prompt was repeatiang characters in arch linux when /etc/locale.gen did not have en_US.UTF-8 uncommented and localegen re-run
 export LANG=en_US.UTF-8
@@ -175,5 +179,12 @@ if [ -f $HOME/.nvm/nvm.sh ]; then
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
+# RUBY RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
 # Billtrust specific
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/go/bin:$PATH
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
