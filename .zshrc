@@ -13,7 +13,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
-# robbyrussell, dracula are other good themes 
+# robbyrussell, dracula are other good themes
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -67,11 +67,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git,
-  heroku,
-  colored-man-pages
-)
+plugins=(git heroku colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -147,7 +143,7 @@ alias duss="du -d 1 -h | sort -hr | egrep -v ^0"
 alias ping='ping -c 5'
 # Do not wait interval 1 second, go fast #
 alias fastping='ping -c 100 -s.2'
- 
+
  # need jq installed
  hibp() {
       curl -fsS "https://haveibeenpwned.com/api/v2/breachedaccount/$1" | jq -r 'sort_by(.BreachDate)[] | [.Title,.Domain,.BreachDate,.PwnCount] | @tsv' | column -t -s$'\t'
@@ -165,6 +161,11 @@ chrome-test() {
   rm -rf $TEMP_DIR
 }
 
+# Open the current directories repository in a web browser
+gopen() {
+	REMOTE=${1:-"origin"}
+	xdg-open `git remote get-url $REMOTE | sed 's/git@/http:\/\//' | sed -r 's/(com|local):/\1\//'` | head -n1
+}
 
 if [ -f /usr/share/doc/pkgfile/command-not-found.zsh ]; then
   source /usr/share/doc/pkgfile/command-not-found.zsh
