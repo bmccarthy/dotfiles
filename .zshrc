@@ -67,7 +67,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git heroku colored-man-pages)
+plugins=(git zsh_reload colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,6 +93,12 @@ export AWS_REGION="us-east-1"
 # GO
 export GOPATH=$HOME/go
 export GOROOT=$HOME/bin/go-src
+
+# AWS MFA STUFF
+export AWS_MFA_USER_OVERRIDE=bmccarthy
+export AWS_MFA_ROLE_OVERRIDE=bt-role-ops-developers
+export AWS_PROFILE=btdev-terraform
+export BT_DEVEL_DIR=~/git
 
 # You may need to manually set your language environment
 # zsh prompt was repeatiang characters in arch linux when /etc/locale.gen did not have en_US.UTF-8 uncommented and localegen re-run
