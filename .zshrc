@@ -88,16 +88,17 @@ fi
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 
-export AWS_REGION="us-east-1"
-
 # GO
 export GOPATH=$HOME/go
 export GOROOT=$HOME/bin/go-src
 
+export AWS_REGION="us-east-1"
+export AWS_ENV=dev
+export AWS_PROFILE=btdev-terraform
+
 # AWS MFA STUFF
 export AWS_MFA_USER_OVERRIDE=bmccarthy
 export AWS_MFA_ROLE_OVERRIDE=bt-role-ops-developers
-export AWS_PROFILE=btdev-terraform
 export BT_DEVEL_DIR=~/git
 
 # You may need to manually set your language environment
