@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:~/.local/bin
+export PATH=~/.dotnet:~/.local/bin:~/anaconda3/bin:$PATH
 
 if [ -f /opt/anaconda/etc/profile.d/conda.sh ]; then
   . /opt/anaconda/etc/profile.d/conda.sh
