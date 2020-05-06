@@ -151,10 +151,19 @@ alias ping='ping -c 5'
 # Do not wait interval 1 second, go fast #
 alias fastping='ping -c 100 -s.2'
 
- # need jq installed
- hibp() {
-      curl -fsS "https://haveibeenpwned.com/api/v2/breachedaccount/$1" | jq -r 'sort_by(.BreachDate)[] | [.Title,.Domain,.BreachDate,.PwnCount] | @tsv' | column -t -s$'\t'
-  }
+cert() {
+  if [ -n "$1" ]
+  then
+    curl -X POST --header "x-apikey: fjd89milesf89klgd65davis07nRPpzvws" "https://certtool.aws-master.billtrust.com/v1/validationRequests/CERT-$1"
+  else
+    echo "Need to specify CERT # (example: cert 1234)"
+  fi
+}
+
+# need jq installed
+hibp() {
+  curl -fsS "https://haveibeenpwned.com/api/v2/breachedaccount/$1" | jq -r 'sort_by(.BreachDate)[] | [.Title,.Domain,.BreachDate,.PwnCount] | @tsv' | column -t -s$'\t'
+}
 
 chrome-test() {
   BASE_TEMP_DIR=~/.google-chrome-temp-profiles
